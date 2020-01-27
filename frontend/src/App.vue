@@ -30,4 +30,9 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+.table {
+  display: table; margin-left: auto; margin-right: auto; border: 1px solid black
+
+}
 </style>

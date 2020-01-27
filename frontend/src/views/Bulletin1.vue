@@ -1,6 +1,23 @@
 <template>
-  <div class="about">
+  <div id="bulletin">
     <h1>This is an bulletin page</h1>
-    <h2>게시판 테스트</h2>
+    <h2>{{ $store.state.buletinTitle  }} </h2>
+    <table class="table">
+    <th>
+      <td>
+      {{$store.state.bulThead.title}}
+      </td>
+      <td>
+        {{$store.state.bulThead.cont}}
+        </td>
+    </th>
+    <tr v-for="(item, index)  in $store.state.data">
+      <td>{{ item.title }}</td>
+      <td>{{ item.content }}</td>
+    </tr>  
+    </table>  
+    <button v-on:click="$store.commit('decrement')">prev</button>
+    <h1>{{$store.state.count}}</h1>
+    <button v-on:click="$store.commit('increment')">next</button>
   </div>
 </template>
