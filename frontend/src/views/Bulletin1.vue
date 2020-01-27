@@ -1,6 +1,5 @@
 <template>
   <div id="bulletin">
-    <h1>This is an bulletin page</h1>
     <h2>{{ $store.state.buletinTitle  }} </h2>
     <table class="table">
     <th>
