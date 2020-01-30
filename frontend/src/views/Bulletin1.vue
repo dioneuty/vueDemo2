@@ -1,48 +1,69 @@
 <template>
   <div id="bulletin">
-    <h2>{{ $store.state.sBuletinTitle  }} </h2>
+    <h2>{{ sBuletinTitle  }} </h2>
     <table class="table">
     <th>
       <td>
-      {{$store.state.objBulThead.title}}
+      {{objBulThead.title}}
       </td>
       <td>
-        {{$store.state.objBulThead.cont}}
+        {{objBulThead.cont}}
         </td>
     </th>
-    <tr v-for="(item, index)  in $store.state.arrThread[($store.state.nCnt - 1)]">
+    <tr v-for="(item, nIndex) in arrThread[(nCnt - 1)]" v-bind:key="nIndex" v-on:click="fn_goDetail(nIndex)">
+      <a href="#/bulletinDetail">
       <td>{{ item.title }}</td>
       <td>{{ item.content }}</td>
+      </a>
     </tr>  
     </table>  
 
     <div>
       <p>
-        <span v-for="(item, nIndex) in $store.state.arrPage">
-          <a v-if='item == $store.state.nCnt' style="color:red">{{item}} </a>
-          <a v-if='item != $store.state.nCnt' style="color:blue; cursor:pointer" v-on:click="$store.state.nCnt = (($store.state.nScroll -1) * 10) + nIndex + 1">{{item}} </a>
+        <span v-for="(item, nIndex) in arrPage" v-bind:key="nIndex">
+          <a v-if='item == nCnt' style="color:red">{{item}} </a>
+          <a v-if='item != nCnt' style="color:blue; cursor:pointer" v-on:click="$store.state.nCnt = (($store.state.nScroll -1) * 10) + nIndex + 1">{{item}} </a>
         </span>
       </p>
     </div>
     <div>
-    <button v-on:click="$store.commit('increment')"><<</button>    
-    <button v-on:click="$store.commit('decrement')">prev</button>
-    <button v-on:click="$store.commit('increment')">next</button>    
-    <button v-on:click="$store.commit('increment')">>></button>    
+    <button v-if="nScroll > 1" v-on:click="$store.commit('gfn_prevBlock')">←</button>    
+    <button v-on:click="$store.commit('gfn_decrement')">prev</button>
+    <button v-on:click="$store.commit('gfn_increment')">next</button>   
+    <button v-if="nScroll * 10 < arrThread.length" v-on:click="$store.commit('gfn_nextBlock')">→</button>    
     </div>
     <div>
     <input type="text"/>
     <button>검색</button>
+    <button>글쓰기</button>
     </div>
   </div>
 </template>
 <script>
-import store from '@/store';
+import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
 
 export default {
   name: 'bulletin',
   created: function () {
-    store.commit('init');
-  }  
+    this.$store.commit('gfn_init');
+  },
+  computed: {
+    ...mapState([
+      'nCnt',
+      'nDtlIdx',
+      'nScroll',
+      'arrThread',
+      'arrPage',
+      'objBulThead',
+      'sBuletinTitle',
+    ]),
+  },
+  methods : {
+    fn_goDetail : function(nIdx){
+      this.$store.state.nDtlIdx = nIdx;
+      this.$store.commit('gfn_goDetail');
+    }
+  }
+
 }
 </script>
