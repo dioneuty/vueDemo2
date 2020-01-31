@@ -1,5 +1,5 @@
 <template>
-	<div id="bulPage">
+	<div id="bulPage" class="container">
 		<bulletin-list></bulletin-list>
 	</div>
 </template>

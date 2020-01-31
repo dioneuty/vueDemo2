@@ -93,10 +93,13 @@ const mutations = {
     }
     ,gfn_goDetail (state) {
       console.log(state.nCnt, state.nDtlIdx);
-	}
-	,gfn_setBulletinList (state, payload) {
-		state.arrThread = payload;
-	}
+    }
+    ,gfn_setBulletinList (state, payload) {
+      state.arrThread = payload;
+    }
+    ,gfn_clickPage (state, nIndex) {
+      state.nCnt = ((state.nScroll -1) * 10) + nIndex + 1;
+    }
 }
 
 const actions = {

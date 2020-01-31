@@ -15,9 +15,11 @@
     <div>
     </div>
     <div>
-    <button>수정</button>
-    <button><a href="#/bulletin">목록</a></button>
-    <button>삭제</button>
+    <button class="btn btn-light">수정</button>
+    <a href="#/bulletin">
+      <button class="btn btn-light">목록</button>
+    </a>
+    <button class="btn btn-light">삭제</button>
     </div>
   </div>
 </template>
