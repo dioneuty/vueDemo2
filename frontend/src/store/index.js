@@ -417,6 +417,14 @@ export default new Vuex.Store({
       context.commit('gfn_increment')
     }
   },
+  getters: {
+    gnCnt: state => {
+      return state.nCnt;
+    },
+    gnScroll: state => {
+      return state.nScroll;
+    },
+  },
   modules: {
   }
 })

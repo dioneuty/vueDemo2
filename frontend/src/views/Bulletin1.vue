@@ -27,10 +27,10 @@
       </p>
     </div>
     <div>
-    <button v-if="nScroll > 1" v-on:click="$store.commit('gfn_prevBlock')">←</button>    
-    <button v-on:click="$store.commit('gfn_decrement')">prev</button>
-    <button v-on:click="$store.commit('gfn_increment')">next</button>   
-    <button v-if="nScroll * 10 < arrThread.length" v-on:click="$store.commit('gfn_nextBlock')">→</button>    
+    <button v-if="nScroll > 1" v-on:click="gfn_prevBlock()">←</button>    
+    <button v-on:click="gfn_decrement()">prev</button>
+    <button v-on:click="gfn_increment()">next</button>   
+    <button v-if="nScroll * 10 < arrThread.length" v-on:click="gfn_nextBlock()">→</button>    
     </div>
     <div>
     <input type="text"/>
@@ -47,7 +47,7 @@ export default {
   created: function () {
     this.$store.commit('gfn_init');
   },
-  computed: {
+  computed: { //mapState, mapGetters
     ...mapState([
       'nCnt',
       'nDtlIdx',
@@ -57,12 +57,25 @@ export default {
       'objBulThead',
       'sBuletinTitle',
     ]),
+    ...mapGetters([
+      'gnCnt',
+      'gnScroll',
+    ]),
   },
-  methods : {
+  methods : { //mapMutations, mapActions
     fn_goDetail : function(nIdx){
       this.$store.state.nDtlIdx = nIdx;
       this.$store.commit('gfn_goDetail');
-    }
+    },
+    ...mapMutations([
+      'gfn_decrement',
+      'gfn_increment',
+      'gfn_nextBlock',
+      'gfn_prevBlock',
+    ]),
+    ...mapActions([
+    ]),
+    
   }
 
 }
