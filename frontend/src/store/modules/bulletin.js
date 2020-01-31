@@ -91,8 +91,9 @@ const mutations = {
 
       }
     }
-    ,gfn_goDetail (state) {
-      console.log(state.nCnt, state.nDtlIdx);
+    ,gfn_goDetail (state, nIdx) {
+      state.nDtlIdx = nIdx;
+      // console.log(state.nCnt, state.nDtlIdx);
     }
     ,gfn_setBulletinList (state, payload) {
       state.arrThread = payload;

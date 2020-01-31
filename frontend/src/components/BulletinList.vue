@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, nIndex) in arrThread[(nCnt - 1)]" v-bind:key="nIndex" v-on:click="fn_goDetail(nIndex)">
+        <tr v-for="(item, nIndex) in arrThread[(nCnt - 1)]" v-bind:key="nIndex" v-on:click="gfn_goDetail(nIndex)">
           <th scope="row">{{ nIndex + 1}}</th>
           <td><a href="#/bulletinDetail">{{ item.title }}</a></td>
           <td></td>
@@ -87,6 +87,7 @@ export default {
       'gfn_nextBlock',
       'gfn_prevBlock',
       'gfn_clickPage',
+      'gfn_goDetail',
     ]),
     ...mapActions('b', [
     ]),
