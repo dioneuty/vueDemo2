@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="jumbotron">
     <form>
-      <h2>{{ sBuletinTitle  }} </h2>
+      <h2 class="display-5">{{ sBuletinTitle  }} </h2>
       <div class="form-group">
         <label for="title">제목</label>
         <input type="text" class="form-control" id="title" v-bind:value="arrThread[nCnt-1][nDtlIdx].title" readonly>
@@ -14,7 +14,7 @@
     <div>
       <button class="btn btn-light">수정</button>
       <a href="#/bulletin">
-        <button >목록</button>
+        <button class="btn btn-primary">목록</button>
       </a>
       <button class="btn btn-light">삭제</button>
     </div>
