@@ -45,10 +45,10 @@ import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
 export default {
   name: 'bulletin',
   created: function () {
-    this.$store.commit('gfn_init');
+    this.$store.commit('b/gfn_init');
   },
   computed: { //mapState, mapGetters
-    ...mapState([
+    ...mapState('b', [
       'nCnt',
       'nDtlIdx',
       'nScroll',
@@ -57,7 +57,7 @@ export default {
       'objBulThead',
       'sBuletinTitle',
     ]),
-    ...mapGetters([
+    ...mapGetters('b',[
       'gnCnt',
       'gnScroll',
     ]),
@@ -65,15 +65,15 @@ export default {
   methods : { //mapMutations, mapActions
     fn_goDetail : function(nIdx){
       this.$store.state.nDtlIdx = nIdx;
-      this.$store.commit('gfn_goDetail');
+      this.$store.commit('b/gfn_goDetail');
     },
-    ...mapMutations([
+    ...mapMutations('b', [
       'gfn_decrement',
       'gfn_increment',
       'gfn_nextBlock',
       'gfn_prevBlock',
     ]),
-    ...mapActions([
+    ...mapActions('b', [
     ]),
     
   }

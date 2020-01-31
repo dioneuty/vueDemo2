@@ -27,7 +27,7 @@ import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
 export default {
   name: 'bulletin',
   computed: {
-    ...mapState([
+    ...mapState('b', [
       'nCnt',
       'nDtlIdx',
       'nScroll',
