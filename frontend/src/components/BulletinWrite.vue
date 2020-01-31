@@ -4,11 +4,11 @@
       <h2>{{ sBuletinTitle  }} </h2>
       <div class="form-group">
         <label for="title">제목</label>
-        <input type="text" class="form-control" id="title" v-bind:value="arrThread[nCnt-1][nDtlIdx].title" readonly>
+        <input type="text" class="form-control" id="title">
       </div>
       <div class="form-group">
         <label for="content">내용</label>
-        <textarea type="text" class="form-control" id="content" v-bind:value="arrThread[nCnt-1][nDtlIdx].content" rows="15" readonly></textarea>
+        <textarea type="text" class="form-control" id="content" rows="15"></textarea>
       </div>
     </form>
     <div>

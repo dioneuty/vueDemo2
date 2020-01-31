@@ -24,16 +24,16 @@
       </tbody>  
     </table>
     <div class="center-block">
-    <ul class="pagination">
+    <ul class="pagination justify-content-center">
       <li v-if="nScroll > 1" class="page-item">
-        <a class="page-link" v-on:click="gfn_prevBlock()">←</a>
+        <a class="page-link" v-on:click="gfn_prevBlock()">&laquo;</a>
       </li>    
       <li class="page-item" v-for="(item, nIndex) in arrPage" v-bind:key="nIndex">
-        <a class="page-link" v-if='item == nCnt' style="color:red; background-color : skyblue;">{{item}}</a>
+        <a class="page-link" v-if='item == nCnt' style="color:white; background-color : #007bff; border-color : #007bff;">{{item}}</a>
         <a class="page-link" v-if='item != nCnt' style="color:blue; cursor:pointer" v-on:click="gfn_clickPage(nIndex)">{{item}} </a>
       </li>
       <li v-if="nScroll * 10 < arrThread.length" class="page-item">
-        <a class="page-link" v-on:click="gfn_nextBlock()">→</a>
+        <a class="page-link" v-on:click="gfn_nextBlock()">&raquo;</a>
       </li>    
     </ul>
     </div>
@@ -49,7 +49,9 @@
         <button class="input-group-text">검색</button>
       </div>
     </div>
-    <button class="btn btn-light">글쓰기</button>
+    <a href="#/bulletinWrite">
+      <button class="btn btn-light">글쓰기</button>
+    </a>
     </div>
   </div>
 </template>
