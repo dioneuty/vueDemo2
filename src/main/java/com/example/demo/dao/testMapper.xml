@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.example.demo.dao.TestMapper">
+    <insert id="insertTest" parameterType="TestDto">
+        INSERT INTO Test 
+        (
+        	ID
+        	, NAME
+        ) 
+        VALUES 
+        (
+        	#{id}
+        	, #{name}
+        )
+    </insert>
+    
+    <update id="updateTest" parameterType="TestDto">
+        UPDATE Test 
+        SET id = #{id}
+          , name = #{name} 
+        WHERE id = #{id}
+    </update>
+    
+    <delete id="deleteTest" parameterType="string">
+        DELETE FROM Test 
+        WHERE id = #{id}
+    </delete>
+    
+    <select id="selectOneTest" parameterType="string" resultType="hashmap">
+        SELECT * 
+        FROM Test 
+        WHERE id = #{id}
+    </select>
+    
+    <select id="selectAllTest" resultType="hashmap">
+        SELECT * 
+        FROM Test
+    </select>
+</mapper>
