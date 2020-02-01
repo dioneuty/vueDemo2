@@ -28,7 +28,7 @@ class Demo1ApplicationTests {
         System.out.println("전체 선택 테스트");
         System.out.println(tMapper.selectAllTest());
         System.out.println("일부 선택 테스트");
-        System.out.println(tMapper.selectOneTest("3"));
+        System.out.println(tMapper.selectOneTest("test"));
     }	
 
 }
