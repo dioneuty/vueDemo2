@@ -312,9 +312,21 @@ const arrBulletinList = [
         {title: '게시판5', content: '아 어려워23'},
       ],
 	]
-	
+  
+const axios = require('axios');  
+
 export default {
 	getArrBulletinList: function(data) {
+    axios.get('/user?ID=12345')
+    .then(function (response) {
+      // handle success
+      console.log(response);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+
     data(arrBulletinList)
     //setTimeout(() => data(arrBulletinList), 400)
 	}
