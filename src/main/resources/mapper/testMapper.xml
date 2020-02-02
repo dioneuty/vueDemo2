@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace="com.example.demo.dao.TestMapper">
+<mapper namespace="com.example.demo.repository.TestRepository">
     <insert id="insertTest" parameterType="hashmap">
         INSERT INTO Test 
         (
@@ -24,12 +24,12 @@
         WHERE id = #{id}
     </update>
     
-    <delete id="deleteTest" parameterType="string">
+    <delete id="deleteTest" parameterType="hashmap">
         DELETE FROM Test 
         WHERE id = #{id}
     </delete>
     
-    <select id="selectOneTest" parameterType="string" resultType="hashmap">
+    <select id="selectOneTest" parameterType="hashmap" resultType="hashmap">
         SELECT * 
         FROM Test 
         WHERE id = #{id}

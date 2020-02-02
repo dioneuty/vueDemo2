@@ -1,4 +1,4 @@
-package com.example.demo.dto;
+package com.example.demo.vo;
 
 public class TestDto {
 	private String id;

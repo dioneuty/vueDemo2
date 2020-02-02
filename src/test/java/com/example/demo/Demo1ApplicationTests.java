@@ -9,26 +9,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.example.demo.dao.TestMapper;
+import com.example.demo.repository.TestRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 class Demo1ApplicationTests {
 	@Autowired
-	private TestMapper tMapper;
+	private TestRepository tMapper;
 	
     @Test
-    public void testTest() {
+    public void testBulletin() {
     	Map<String, Object> map = new HashMap<String, Object>();
     	
     	map.put("id", "5");
     	map.put("name", "test");
-        tMapper.insertTest(map);
+//        tMapper.insertTest(map);
         
         System.out.println("전체 선택 테스트");
         System.out.println(tMapper.selectAllTest());
         System.out.println("일부 선택 테스트");
-        System.out.println(tMapper.selectOneTest("test"));
+        
+    	map.put("id", "3");
+    	map.put("name", "test");
+        System.out.println(tMapper.selectOneTest(map));
     }	
 
 }
