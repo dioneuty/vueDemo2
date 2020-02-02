@@ -44,7 +44,7 @@
     </select>
     
     <select id="selectCountTest" resultType="Integer">
-		SELECT CASE WHEN COUNT(idx) % 10 > 0 THEN COUNT(idx)/10 + 1 ELSE COUNT(idx)/10 END as tot_cnt
+		SELECT CASE WHEN COUNT(1) % 10 > 0 THEN COUNT(1)/10 + 1 ELSE COUNT(1)/10 END as tot_cnt
         FROM Test
     </select>    
     
