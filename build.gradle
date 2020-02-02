@@ -44,8 +44,8 @@ dependencies {
 	compile group: 'org.apache.directory.studio', name: 'org.apache.commons.lang', version: '2.6'
 	// https://mvnrepository.com/artifact/org.apache.directory.studio/org.apache.commons.collections
 	compile group: 'org.apache.directory.studio', name: 'org.apache.commons.collections', version: '3.2.1'
-
-
+	// https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4
+	compile group: 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc4', version: '1.16'
 }
 
 test {

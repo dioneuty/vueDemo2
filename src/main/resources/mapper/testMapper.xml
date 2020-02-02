@@ -35,8 +35,17 @@
         WHERE id = #{id}
     </select>
     
-    <select id="selectAllTest" resultType="lowerKeyMap">
-        SELECT TITLE title, ID id, CONTENT content, NAME name
+    <select id="selectAllTest" parameterType="hashmap" resultType="lowerKeyMap">
+        SELECT *
         FROM Test
+        ORDER BY IDX DESC
+        LIMIT 10 
+        OFFSET (${cnt} - 1) * 10
     </select>
+    
+    <select id="selectCountTest" resultType="Integer">
+		SELECT CASE WHEN COUNT(idx) % 10 > 0 THEN COUNT(idx)/10 + 1 ELSE COUNT(idx)/10 END as tot_cnt
+        FROM Test
+    </select>    
+    
 </mapper>

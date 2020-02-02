@@ -26,7 +26,7 @@ class Demo1ApplicationTests {
 //        tMapper.insertTest(map);
         
         System.out.println("전체 선택 테스트");
-        System.out.println(tMapper.selectAllTest());
+//        System.out.println(tMapper.selectAllTest());
         System.out.println("일부 선택 테스트");
         
     	map.put("id", "3");

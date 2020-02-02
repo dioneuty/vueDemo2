@@ -16,42 +16,37 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, nIndex) in arrThread[(nCnt - 1)]" v-bind:key="nIndex" v-on:click="gfn_goDetail(nIndex)">
-          <th scope="row">{{ nIndex + 1}}</th>
+        <tr v-for="(item, nIndex) in arrThread" v-bind:key="nIndex" v-on:click="gfn_goDetail(nIndex)">
+          <th scope="row">{{ item.idx}}</th>
           <td><a href="#/bulletinDetail">{{ item.title }}</a></td>
           <td></td>
         </tr>  
       </tbody>  
     </table>
     <div class="center-block">
-    <ul class="pagination justify-content-center">
-      <li v-if="nScroll > 1" class="page-item">
-        <a class="page-link" v-on:click="gfn_prevBlock()">&laquo;</a>
-      </li>    
-      <li class="page-item" v-for="(item, nIndex) in arrPage" v-bind:key="nIndex">
-        <a class="page-link" v-if='item == nCnt' style="color:white; background-color : #007bff; border-color : #007bff;">{{item}}</a>
-        <a class="page-link" v-if='item != nCnt' style="color:blue; cursor:pointer" v-on:click="gfn_clickPage(nIndex)">{{item}} </a>
-      </li>
-      <li v-if="nScroll * 10 < arrThread.length" class="page-item">
-        <a class="page-link" v-on:click="gfn_nextBlock()">&raquo;</a>
-      </li>    
-    </ul>
+      <ul class="pagination justify-content-center">
+        <li v-if="nScroll > 1" class="page-item">
+          <a class="page-link" v-on:click="gfn_prevBlock()">&laquo;</a>
+        </li>    
+        <li class="page-item" v-for="(item, nIndex) in arrPage" v-bind:key="nIndex">
+          <a class="page-link" v-if='item == nCnt' style="color:white; background-color : #007bff; border-color : #007bff;">{{item}}</a>
+          <a class="page-link" v-if='item != nCnt' style="color:blue; cursor:pointer" v-on:click="gfn_clickPage(nIndex)">{{item}} </a>
+        </li>
+        <li v-if="nScroll * 10 < nTotCnt" class="page-item">
+          <a class="page-link" v-on:click="gfn_nextBlock()">&raquo;</a>
+        </li>    
+      </ul>
     </div>
     <div>
-    <button v-on:click="gfn_decrement()" class="btn btn-light">prev</button>
-    <button v-on:click="gfn_increment()" class="btn btn-light">next</button>   
-    
-    </div>
-    <div>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control"/>
-      <div class="input-group-append">
-        <button class="input-group-text">검색</button>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control"/>
+        <div class="input-group-append">
+          <button class="input-group-text">검색</button>
+        </div>
       </div>
-    </div>
-    <a href="#/bulletinWrite">
-      <button class="btn btn-light">글쓰기</button>
-    </a>
+      <a href="#/bulletinWrite">
+        <button class="btn btn-light">글쓰기</button>
+      </a>
     </div>
   </div>
 </template>
@@ -68,6 +63,7 @@ export default {
       'nCnt',
       'nDtlIdx',
       'nScroll',
+      'nTotCnt',
       'arrThread',
       'arrPage',
       'objBulThead',

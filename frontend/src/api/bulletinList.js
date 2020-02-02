@@ -316,10 +316,12 @@ const arrBulletinList = [
 const axios = require('axios');  
 
 export default {
-	getArrBulletinList: function(data) {
+	api_getArrBulletinList(data) {
     console.log('테스트');
 
-    axios.get('/api/getBulList')
+    axios.post('/api/getBulList',{
+      cnt : data.nCnt  
+    })
     .then(function (response) {
       // handle success
       console.log(response);
@@ -327,6 +329,8 @@ export default {
       let arrList = [];
       arrList.push(arr);
       data(arrList)
+      
+      // console.log(data);      
     })
     .catch(function (error) {
       // handle error

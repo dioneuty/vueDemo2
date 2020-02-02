@@ -15,5 +15,6 @@ public interface TestRepository {
     public Integer updateTest (Map<String,Object> Test);
     public Integer deleteTest (Map<String,Object> Test);
     public Map<String,Object> selectOneTest (Map<String,Object> Test);
-    public List<Map<String,Object>> selectAllTest();
+    public List<Map<String,Object>> selectAllTest(Map<String,Object> Test);
+	public Integer selectCountTest();
 }

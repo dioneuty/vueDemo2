@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,13 +36,22 @@ public class BulletinController {
      * @return String
      */
     @RequestMapping(path = "/getBulList")
-    public @ResponseBody String getBulList() { 
+    public @ResponseBody String getBulList(@RequestParam Map<String, Object> paramMap) { 
     	LOG.debug("게시판 목록 출력 중");
     	Gson gson = new Gson();
     	
-    	List<Map<String,Object>> bulList = testRepo.selectAllTest();
+    	List<Map<String,Object>> bulList = testRepo.selectAllTest(paramMap);
     	
-    	String sJson = gson.toJson(bulList);
+    	Integer nCount = testRepo.selectCountTest();
+
+    	Map<String, Object> resultMap = new HashMap<String, Object>();
+    	
+    	resultMap.put("list", bulList);
+    	resultMap.put("cnt", nCount);
+    	String sJson = gson.toJson(resultMap);
+    	
+    	LOG.debug(sJson);
+    	
     	return sJson;
     }
     
@@ -50,11 +60,11 @@ public class BulletinController {
      * @return String
      */
     @RequestMapping(path = "/getOneBulThread")
-    public @ResponseBody String getOneBulThread() { 
+    public @ResponseBody String getOneBulThread(@RequestParam Map<String,Object> paramMap) { 
     	LOG.debug("게시판 목록 출력 중");
     	Gson gson = new Gson();
     	
-    	List<Map<String,Object>> bulList = testRepo.selectAllTest();
+    	List<Map<String,Object>> bulList = testRepo.selectAllTest(paramMap);
     	
     	String sJson = gson.toJson(bulList);
     	return sJson;
