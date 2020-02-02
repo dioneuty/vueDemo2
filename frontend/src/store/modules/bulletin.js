@@ -14,7 +14,9 @@ const state = {
 
 const mutations = {
     gfn_init(state) {
+      console.log('api 테스트 - 시작');
       arrBulletinList.getArrBulletinList(payload => state.arrThread = payload)
+      console.log('api 테스트 - 끝')
       let arr = [];
       let nTmp = (state.nScroll - 1) * 10 + 1;
       for(let i = nTmp; i <= nTmp + 9; i++){

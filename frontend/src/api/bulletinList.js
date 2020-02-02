@@ -317,17 +317,22 @@ const axios = require('axios');
 
 export default {
 	getArrBulletinList: function(data) {
-    axios.get('/user?ID=12345')
+    console.log('테스트');
+
+    axios.get('/api/getBulList')
     .then(function (response) {
       // handle success
       console.log(response);
+      let arr = response.data;
+      let arrList = [];
+      arrList.push(arr);
+      data(arrList)
     })
     .catch(function (error) {
       // handle error
       console.log(error);
     })
-
-    data(arrBulletinList)
+    
     //setTimeout(() => data(arrBulletinList), 400)
 	}
 }

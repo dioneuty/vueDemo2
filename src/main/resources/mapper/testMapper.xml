@@ -29,14 +29,14 @@
         WHERE id = #{id}
     </delete>
     
-    <select id="selectOneTest" parameterType="hashmap" resultType="hashmap">
+    <select id="selectOneTest" parameterType="hashmap" resultType="lowerKeyMap">
         SELECT * 
         FROM Test 
         WHERE id = #{id}
     </select>
     
-    <select id="selectAllTest" resultType="hashmap">
-        SELECT * 
+    <select id="selectAllTest" resultType="lowerKeyMap">
+        SELECT TITLE title, ID id, CONTENT content, NAME name
         FROM Test
     </select>
 </mapper>
