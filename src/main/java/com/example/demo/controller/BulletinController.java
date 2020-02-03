@@ -74,16 +74,9 @@ public class BulletinController {
     public Integer createOneBulThread(@RequestParam Map<String,Object> paramMap) { 
     	LOG.debug("게시판 목록 출력 중");
     	
-    	String sId = (String) paramMap.get("id");
-    	String sCont = (String) paramMap.get("content"); 
-    	
-    	if(StringUtils.isEmpty(sId)) return 0;
+    	if(StringUtils.isEmpty((String) paramMap.get("id"))) return 0;
 
-    	Map<String, Object> map = new HashMap<String, Object>();
-    	map.put("id", sId);
-    	map.put("content", sCont);
-    	
-    	Integer nResult = testRepo.insertTest(map);
+    	Integer nResult = testRepo.insertTest(paramMap);
     	return nResult;
     }
     
@@ -91,15 +84,9 @@ public class BulletinController {
     public Integer deleteOneBulThreadByUserId(@RequestParam Map<String,Object> paramMap) { 
     	LOG.debug("게시판 목록 출력 중");
     	
-    	String sId = (String) paramMap.get("id");
-    	Integer nIdx = (Integer) paramMap.get("idx");
-    	if(StringUtils.isEmpty(sId) || StringUtils.isEmpty(nIdx) ) return 0;
-
-    	Map<String, Object> map = new HashMap<String, Object>();
-    	map.put("id", sId);
-    	map.put("idx", nIdx);
+    	if(StringUtils.isEmpty((String) paramMap.get("idx"))) return 0;
     	
-    	Integer nResult = testRepo.deleteTest(map);
+    	Integer nResult = testRepo.deleteTest(paramMap);
     	return nResult;
     }    
 }

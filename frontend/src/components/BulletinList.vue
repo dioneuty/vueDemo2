@@ -75,7 +75,7 @@ export default {
     ]),
   },
   methods : { //mapMutations, mapActions
-    fn_goDetail : function(nIdx){
+    fn_goDetail(nIdx){
       this.$store.state.nDtlIdx = nIdx;
       this.$store.commit('b/gfn_goDetail');
     },

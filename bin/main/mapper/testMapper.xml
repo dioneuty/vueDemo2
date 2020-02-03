@@ -7,13 +7,19 @@
     <insert id="insertTest" parameterType="hashmap">
         INSERT INTO Test 
         (
-        	ID
+        	IDX
+        	, ID
         	, NAME
+        	, TITLE
+        	, CONTENT
         ) 
         VALUES 
         (
-        	#{id}
+        	IFNULL((SELECT MAX(IDX) FROM TEST), 0) + 1
+        	,#{id}
         	, #{name}
+        	, #{title}
+        	, #{content}
         )
     </insert>
     
@@ -25,8 +31,8 @@
     </update>
     
     <delete id="deleteTest" parameterType="hashmap">
-        DELETE FROM Test 
-        WHERE id = #{id}
+        DELETE FROM Test
+        WHERE idx = #{idx}
     </delete>
     
     <select id="selectOneTest" parameterType="hashmap" resultType="lowerKeyMap">

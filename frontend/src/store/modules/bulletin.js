@@ -19,6 +19,8 @@ const AXIOS = axios.create({
 });
 
 const afn_getBulList = function(){
+  console.log(state.nCnt);
+
   AXIOS({
     url: '/getBulList', 
     method: 'post',
@@ -145,6 +147,9 @@ const mutations = {
       state.nCnt = ((state.nScroll -1) * 10) + nIndex + 1;
 
       await !afn_getBulList();
+    }
+    ,gfn_createOne (state) {
+
     }
 }
 

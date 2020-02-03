@@ -311,25 +311,34 @@ const arrBulletinList = [
         {title: '게시판5', content: '아 어려워23'},
         {title: '게시판5', content: '아 어려워23'},
       ],
-	]
+  ]
   
-const axios = require('axios');  
+import axios from 'axios'  
+  
+const AXIOS = axios.create({
+  baseURL: `/api`,
+});
 
 export default {
-	api_getArrBulletinList(data) {
+	api_getArrBulletinList(nCnt) {
     console.log('테스트');
+    console.log(nCnt);
 
-    axios.post('/api/getBulList',{
-      cnt : data.nCnt  
+    AXIOS({
+      url: '/getBulList', 
+      method: 'post',
+      params :{
+        cnt : nCnt
+      } 
     })
     .then(function (response) {
       // handle success
       console.log(response);
-      let arr = response.data;
-      let arrList = [];
-      arrList.push(arr);
-      data(arrList)
+
+      let data = response.data;
       
+      return [data.list, data.cnt];
+
       // console.log(data);      
     })
     .catch(function (error) {
